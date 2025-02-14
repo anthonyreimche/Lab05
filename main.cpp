@@ -155,8 +155,110 @@ Flowchart for countPrimesTest function:
 [Display total]
      ↑_________|
 */
+unsigned int primeFactorization(const unsigned int n1, const unsigned int n2, const unsigned int nFactors, const unsigned char display) {
+    unsigned int start = (n1 < n2) ? n1 : n2;
+    unsigned int end = (n1 > n2) ? n1 : n2;
+    unsigned int total = 0;
+
+    // Skip 1 since it has no prime factors
+    if (start < 2) start = 2;
+
+    for (unsigned int i = start; i <= end; i++) {
+        unsigned int num = i;
+        unsigned int factorCount = 0;
+
+        // Count prime factors
+        for (unsigned int j = 2; j <= num; j++) {
+            if (!isPrime(j)) continue;
+
+            while (num % j == 0) {
+                factorCount++;
+                num /= j;
+            }
+        }
+
+        if (factorCount == nFactors) {
+            total++;
+            if (display == 'y' || display == 'Y') {
+                num = i;
+                printf("%u |", i);
+                // Print prime factors
+                for (unsigned int j = 2; j <= num; j++) {
+                    if (!isPrime(j)) continue;
+                    while (num % j == 0) {
+                        printf(" %u |", j);
+                        num /= j;
+                    }
+                }
+                printf("\n");
+            }
+        }
+    }
+    return total;
+}
+
+void primeFactorizationTest() {
+    unsigned int n1, n2, nFactors;
+    unsigned char display;
+
+    while (1) {
+        printf("Please enter n1, n2: ");
+        scanf_s("%u,%u", &n1, &n2);
+
+        if (n1 == 0 || n2 == 0) {
+            printf("Press ENTER to exit...");
+            getchar();  // Consume newline
+            getchar();  // Wait for ENTER
+            break;
+        }
+
+        printf("Please enter the number of prime factors to find: ");
+        scanf_s("%u", &nFactors);
+
+        printf("Display the results? (y/n) ");
+        getchar();  // Consume the newline from previous scanf
+        scanf_s("%c", &display, 1);
+
+        unsigned int total = primeFactorization(n1, n2, nFactors, display);
+        printf("%u total numbers with %u prime factors found between %u and %u.\n",
+               total, nFactors, n1, n2);
+    }
+}
+
+/*
+Flowchart for primeFactorization function:
+
+[Start]
+     ↓
+[Input n1, n2, nFactors, display]
+     ↓
+[Set start = min(n1,n2)]
+[Set end = max(n1,n2)]
+[Set total = 0]
+     ↓
+[Check if i ≤ end] → No → [Return total]
+     ↓ Yes
+[Set num = i, factorCount = 0]
+     ↓
+[For each potential prime j]
+     ↓
+[If j is prime]
+     ↓
+[While num divisible by j]
+     ↓
+[Increment factorCount]
+[Divide num by j]
+     ↓
+[If factorCount equals nFactors]
+     ↓
+[Increment total]
+[If display, print number and factors]
+     ↓
+[Increment i]
+     ↑_______________|
+*/
 
 
 int main() {
-    countPrimesTest();
+    primeFactorizationTest();
 }
