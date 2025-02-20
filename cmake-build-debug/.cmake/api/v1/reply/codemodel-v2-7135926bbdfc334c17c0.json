@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/Repositories/Lab05/cmake-build-debug",
-		"source" : "D:/Repositories/Lab05"
+		"build" : "C:/Users/roota/CLionProjects/Lab05/cmake-build-debug",
+		"source" : "C:/Users/roota/CLionProjects/Lab05"
 	},
 	"version" : 
 	{

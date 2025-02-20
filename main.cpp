@@ -259,6 +259,42 @@ Flowchart for primeFactorization function:
 */
 
 
+enum mainMenu {EXIT, TASK1, TASK2, TASK3};
+
 int main() {
-    primeFactorizationTest();
+    int choice;
+    
+    do {
+        printf("\nPrime Number Operations Menu:\n");
+        printf("%d. Test if a number is prime\n", TASK1);
+        printf("%d. Count prime numbers in a range\n", TASK2);
+        printf("%d. Prime factorization\n", TASK3);
+        printf("%d. Exit\n", EXIT);
+        printf("Enter your choice (%d-%d): ", EXIT, TASK3);
+        
+        if (scanf_s("%d", &choice) != 1) {
+            // Clear input buffer if invalid input
+            while (getchar() != '\n');
+            choice = -1;  // Invalid choice
+        }
+        
+        switch (choice) {
+            case TASK1:
+                isPrimeTest();
+                break;
+            case TASK2:
+                countPrimesTest();
+                break;
+            case TASK3:
+                primeFactorizationTest();
+                break;
+            case EXIT:
+                printf("Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != EXIT);
+    
+    return 0;
 }
