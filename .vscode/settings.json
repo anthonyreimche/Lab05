@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": true,
+    "cmake.configurePreset": "windows-default",
+    "cmake.buildPreset": "windows-default",
+    "cmake.debugConfig": {
+        "externalConsole": true
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "windows-default",
+            "displayName": "Windows x64 Debug",
+            "description": "Target Windows with the MinGW compiler",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install",
+                "CMAKE_C_COMPILER": "C:/Program Files/JetBrains/CLion 2024.3.2/bin/mingw/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/Program Files/JetBrains/CLion 2024.3.2/bin/mingw/bin/g++.exe"
+            },
+            "environment": {
+                "PATH": "C:/Program Files/JetBrains/CLion 2024.3.2/bin/mingw/bin"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-default",
+            "configurePreset": "windows-default"
+        }
+    ]
+}

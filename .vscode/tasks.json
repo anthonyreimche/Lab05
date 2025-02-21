@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Lab05",
+            "type": "shell",
+            "command": "\"C:/Program Files/JetBrains/CLion 2024.3.2/bin/cmake/win/x64/bin/cmake.exe\"",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "options": {
+                "env": {
+                    "PATH": "C:\\Program Files\\JetBrains\\CLion 2024.3.2\\bin\\mingw\\bin;${env:PATH}"
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["Configure CMake"],
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Configure CMake",
+            "type": "shell",
+            "command": "\"C:/Program Files/JetBrains/CLion 2024.3.2/bin/cmake/win/x64/bin/cmake.exe\"",
+            "args": [
+                "-G",
+                "MinGW Makefiles",
+                "-B",
+                "build",
+                "-S",
+                "."
+            ],
+            "options": {
+                "env": {
+                    "PATH": "C:\\Program Files\\JetBrains\\CLion 2024.3.2\\bin\\mingw\\bin;${env:PATH}"
+                }
+            },
+            "problemMatcher": []
+        }
+    ]
+}
